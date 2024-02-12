@@ -1,0 +1,31 @@
+
+<ion-app style="background-color: #1c345c">
+  <ion-content class="ion-padding" fullscreen>
+    <div class="login-container">
+      <div style="height: 100px;"></div>
+      <ion-card class="login-card" >
+
+        <ion-card-content>
+            <div>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input type="text" [(ngModel)]="username" style="color: #000;"></ion-input>
+            </div>
+
+            <div>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password"  [(ngModel)]="password"  style="color: #000;"></ion-input>
+            </div>
+
+          <ion-button  fill="clear" expand="full" (click)="login()" style="background-color: #1c345c;color: #fff;">Sing in</ion-button>
+          <div class="container_logo">
+            <ion-img class="logo" src="../../assets/img/logo_circle.png"></ion-img>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <div style="height: 20px;"></div>
+      <div style="text-align: center;">
+        <ion-label class="all_reserved">© 2023 All rights reserved, Inspection Squad</ion-label>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,7 @@
+{
+  "name": "InspectionSquad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
