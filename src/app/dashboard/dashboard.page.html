@@ -34,39 +34,47 @@
   </ion-grid>
 
 
-  <ion-grid *ngIf="vacio">
-    <ion-row>
-      <ion-col>
-        <ion-card>
+  <ion-grid>
+      <ion-card>
           <ion-card-content>
-            <ion-label style="font-size: 20px;"> Has no pending inspections<ion-icon name="alert"></ion-icon></ion-label>
+            <ion-row>
+              <ion-col style="text-align: center;">
+                <ion-button fill="default"  size="large" style="background-color: #fff;color: #000;" (click)="update()"><ion-icon name="reload-outline"></ion-icon></ion-button><br>
+                <ion-label>PRESS TO UPDATE INSPECTIONS</ion-label>
+              </ion-col>
+            </ion-row>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
+        <ion-card *ngIf="swPending">
+          <ion-card-content>
+            <ion-row>
+              <ion-col style="text-align: center;">
+                <ion-label style="font-size: 20px;"> Has no pending inspections
+                  <ion-icon name="alert"></ion-icon>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
   </ion-grid>
 
 
 </ion-content>
-
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar style="height: 80px;">
     <ion-tabs>
-      <ion-tab-bar slot="bottom" style="background-color: #1c345c;">
+      <ion-tab-bar slot="bottom" style="background-color: #1c345c;height: 100px;">
         <ion-tab-button tab="" routerLink="../assing" style="font-size:14px;background-color: #1c345c;color: #fff">
-          <ion-icon name="person-add-outline"></ion-icon>
-          <ion-label>ASSING</ion-label>
+          <ion-icon size="large" name="person-add-outline"></ion-icon>
         </ion-tab-button>
 
 
         <ion-tab-button tab="" routerLink="../list" style="font-size:14px;background-color: #1c345c;color: #fff;">
-          <ion-icon aria-hidden="true" name="list"></ion-icon>
-          <ion-label>LIST</ion-label>
+          <ion-icon aria-hidden="true" size="large" name="list"></ion-icon>
         </ion-tab-button>
 
         <ion-tab-button tab="" routerLink="../inspector" style="font-size:14px;background-color: #1c345c;color: #fff;" *ngIf="swAdmin">
           <ion-icon name="person-circle-outline"></ion-icon>
-          <ion-label>INSPECTORS</ion-label>
         </ion-tab-button>
 
       </ion-tab-bar>

@@ -13,7 +13,7 @@ export class DashboardPage implements OnInit{
   nivel:any;
   isActionSheetOpen = false;
   user:any;
-  vacio: boolean=false;
+  swPending:boolean=false;
   swAdmin:boolean=false;
   isRefrescar=false;
 
@@ -26,6 +26,12 @@ export class DashboardPage implements OnInit{
 
  async  ngOnInit(){
     document.body.classList.remove('dark');
+    let hasPermissionCamera=await Camera.checkPermissions();
+    console.log(hasPermissionCamera);
+    this.update();
+  }
+
+  update(){
     localStorage.setItem("id_inspection","")
     this.user=localStorage.getItem("username");
     this.nivel=localStorage.getItem("nivel");
@@ -35,8 +41,6 @@ export class DashboardPage implements OnInit{
     }else{
       this.loadAssigment();
     }
-    let hasPermissionCamera=await Camera.checkPermissions();
-    console.log(hasPermissionCamera);
   }
 
 
@@ -44,12 +48,13 @@ export class DashboardPage implements OnInit{
     this.service.getAsignmentAll().subscribe(
       (data)=>{
         this.datos= data;
-        data[0]==undefined?this.vacio=true:this.vacio=false;
+        data[0]==undefined?this.swPending=true:this.swPending=false;
       },
       (error)=>{
         console.error("Error al obtener los datos", error);
       }
     )
+    this.refreshPage();
   }
 
   loadAssigment(){
@@ -61,7 +66,7 @@ export class DashboardPage implements OnInit{
     this.service.getAssigmentById(datos).subscribe(
       (data)=>{
         this.datos= data;
-        data[0]==undefined?this.vacio=true:this.vacio=false;
+        data[0]==undefined?this.swPending=true:this.swPending=false;
       },
       (error)=>{
         console.error("Error al obtener los datos", error);
