@@ -106,4 +106,9 @@ export class DashboardPage {
     });
     await actionSheet.present();
   }
+
+  refresh(){
+    document.location.reload();
+  }
+
 }
