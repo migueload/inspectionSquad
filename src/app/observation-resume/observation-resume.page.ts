@@ -213,6 +213,10 @@ export class ObservationResumePage implements OnInit{
   }
 
 
+  back(){
+    this.navCtrl.navigateForward('dashboard');
+  }
+
 
 }
 
